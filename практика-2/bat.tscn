@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://snxrl4tvvob1"]
+
+[ext_resource type="Script" uid="uid://daq526dj8vwnw" path="res://Bat.cs" id="1_pb2o4"]
+
+[sub_resource type="Gradient" id="Gradient_tofr1"]
+colors = PackedColorArray(0.12347304, 0.12347304, 0.12347304, 1, 0.00069389754, 0.00069389766, 0.0006938976, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqxyq"]
+gradient = SubResource("Gradient_tofr1")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1h7m"]
+radius = 26.019224
+
+[node name="Bat" type="Area2D" unique_id=556273947]
+script = ExtResource("1_pb2o4")
+VerticalSpeed = 300.0
+Health = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=320656985]
+scale = Vector2(0.8125, 0.84375)
+texture = SubResource("GradientTexture2D_fqxyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001154590]
+shape = SubResource("CircleShape2D_w1h7m")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=486316114]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_On_Sreen_Exited"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://clb1iikfu7350"]
+
+[ext_resource type="Script" uid="uid://bcyuj0e011hoy" path="res://Zombie.cs" id="1_uiaus"]
+
+[sub_resource type="Gradient" id="Gradient_roy8y"]
+colors = PackedColorArray(0, 0.3019608, 0, 1, 0, 0.2901961, 0.12156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqxyq"]
+gradient = SubResource("Gradient_roy8y")
+fill_to = Vector2(0.7601156, 0.6589595)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sdab"]
+radius = 25.0
+height = 78.0
+
+[node name="Zombie" type="Area2D" unique_id=1440512249]
+script = ExtResource("1_uiaus")
+Health = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1719536900]
+position = Vector2(4.7683716e-07, 0)
+scale = Vector2(0.65625, 1)
+texture = SubResource("GradientTexture2D_fqxyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=490701827]
+shape = SubResource("CapsuleShape2D_7sdab")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1163834610]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_On_Sreen_Exited"]

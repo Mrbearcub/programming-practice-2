@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://vppi7yecu7uo"]
+
+[ext_resource type="PackedScene" uid="uid://3grhlhs88oe" path="res://Player.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://davi3n0wuj41h" path="res://Field.cs" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://clb1iikfu7350" path="res://zombie.tscn" id="2_oi3di"]
+[ext_resource type="PackedScene" uid="uid://snxrl4tvvob1" path="res://bat.tscn" id="3_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bbh4hdkxwf04a" path="res://rock.tscn" id="4_f2txt"]
+
+[sub_resource type="Gradient" id="Gradient_5xgho"]
+offsets = PackedFloat32Array(0.212, 1)
+colors = PackedColorArray(0, 0.85882354, 0.85490197, 1, 1, 1, 0.5254902, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hf7dp"]
+gradient = SubResource("Gradient_5xgho")
+fill_to = Vector2(1, 0.39595374)
+
+[sub_resource type="Gradient" id="Gradient_u52ul"]
+colors = PackedColorArray(0, 0.47058824, 0, 1, 0.12156863, 0.7764706, 0.2509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqxyq"]
+gradient = SubResource("Gradient_u52ul")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf7dp"]
+size = Vector2(1243, 207.5)
+
+[node name="Level" type="Node2D" unique_id=1719789553]
+script = ExtResource("1_vonw3")
+Objects = Array[PackedScene]([ExtResource("2_oi3di"), ExtResource("3_0b4ue"), ExtResource("4_f2txt")])
+
+[node name="Sky" type="Sprite2D" parent="." unique_id=1067792277]
+position = Vector2(584, 337.00003)
+scale = Vector2(19, 11.09375)
+texture = SubResource("GradientTexture2D_hf7dp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1442649475]
+position = Vector2(583, 582)
+
+[node name="Grass" type="Sprite2D" parent="StaticBody2D" unique_id=1543440846]
+position = Vector2(1.5, 2.999979)
+scale = Vector2(19.296875, 3.15625)
+texture = SubResource("GradientTexture2D_fqxyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2074287499]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_hf7dp")
+
+[node name="Timer" type="Timer" parent="." unique_id=1739099716]
+wait_time = 1.5
+autostart = true
+
+[node name="Player" parent="." unique_id=1459819716 instance=ExtResource("1_u52ul")]
+position = Vector2(162, 444)
+
+[connection signal="timeout" from="Timer" to="." method="_OnSpawnTimerTimeout"]

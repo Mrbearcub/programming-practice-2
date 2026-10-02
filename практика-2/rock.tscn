@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbh4hdkxwf04a"]
+
+[ext_resource type="Script" uid="uid://dinytia481e13" path="res://Rock.cs" id="1_o0qsl"]
+
+[sub_resource type="Gradient" id="Gradient_68h2w"]
+colors = PackedColorArray(0.41215247, 0.41215247, 0.41215247, 1, 0.6858353, 0.68583524, 0.6858352, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqxyq"]
+gradient = SubResource("Gradient_68h2w")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hf7dp"]
+radius = 11.0
+height = 50.0
+
+[node name="Rock" type="Area2D" unique_id=670959774]
+script = ExtResource("1_o0qsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1011804903]
+scale = Vector2(0.46875, 1)
+texture = SubResource("GradientTexture2D_fqxyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1343927622]
+shape = SubResource("CapsuleShape2D_hf7dp")

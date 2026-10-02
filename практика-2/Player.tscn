@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://3grhlhs88oe"]
+
+[ext_resource type="Script" uid="uid://co43mjmx3h4a" path="res://player.cs" id="1_xhfnw"]
+
+[sub_resource type="Gradient" id="Gradient_kpjcp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vonw3"]
+gradient = SubResource("Gradient_kpjcp")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vonw3"]
+radius = 31.144823
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hf7dp"]
+radius = 11.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1459819716]
+script = ExtResource("1_xhfnw")
+Gravity = 1500.0
+JumpVelocity = -1000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2061920952]
+texture = SubResource("GradientTexture2D_vonw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1569992194]
+shape = SubResource("CircleShape2D_vonw3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1314368171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=162353986]
+shape = SubResource("CircleShape2D_hf7dp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_On_Collision"]
